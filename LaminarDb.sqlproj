@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>LaminarDb</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{2adb8bf4-f591-4497-8df2-d96152ee27bf}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Laminar</RootNamespace>
+    <AssemblyName>Laminar</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetDatabase>Laminar</TargetDatabase>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="support\" />
+    <Folder Include="support\Stored Procedures\" />
+    <Folder Include="helpers\" />
+    <Folder Include="helpers\Stored Procedures\" />
+    <Folder Include="support\User Defined Types\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\User Defined Types\" />
+    <Folder Include="engine\" />
+    <Folder Include="engine\Tables\" />
+    <Folder Include="engine\Stored Procedures\" />
+    <Folder Include="engine\User Defined Types\" />
+    <Folder Include="helpers\scripts" />
+    <Folder Include="sample\" />
+    <Folder Include="sample\Tables\" />
+    <Folder Include="sample\Functions\" />
+    <Folder Include="sample\Stored Procedures\" />
+    <Folder Include="work\" />
+    <Folder Include="work\Tables\" />
+    <Folder Include="work\Stored Procedures\" />
+    <Folder Include="work\Functions\" />
+    <Folder Include="qry\" />
+    <Folder Include="qry\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LaminarDb.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\dbo.Trade.sql" />
+    <Build Include="dbo\Tables\dbo.SystemUser.sql" />
+    <Build Include="dbo\Tables\dbo.Instrument.sql" />
+    <Build Include="dbo\Tables\dbo.Fund.sql" />
+    <Build Include="dbo\Tables\dbo.Currency.sql" />
+    <Build Include="dbo\Tables\dbo.Country.sql" />
+    <Build Include="dbo\Tables\dbo.Contract.sql" />
+    <Build Include="dbo\Tables\dbo.Client.sql" />
+    <Build Include="dbo\Views\dbo.TradeDisplay.sql" />
+    <Build Include="dbo\Stored Procedures\dbo.Trade_Update.sql" />
+    <Build Include="dbo\Stored Procedures\dbo.Trade_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\dbo.Trade_Delete.sql" />
+    <Build Include="support\Stored Procedures\support.ReportIncorrectUpdateKeyInfo.sql" />
+    <Build Include="support\Stored Procedures\support.ReportValidationError.sql" />
+    <Build Include="support\Stored Procedures\support.ReportSqlError.sql" />
+    <Build Include="helpers\Stored Procedures\helpers.PrintRowCount.sql" />
+    <Build Include="helpers\Stored Procedures\helpers.DropType.sql" />
+    <Build Include="helpers\Stored Procedures\helpers.DropObject.sql" />
+    <Build Include="helpers\Stored Procedures\helpers.CreateSchema.sql" />
+    <Build Include="support\User Defined Types\support.KeyInfo.sql" />
+    <Build Include="Security\support.sql" />
+    <Build Include="Security\helpers.sql" />
+    <Build Include="dbo\Tables\dbo.Custodian.sql" />
+    <Build Include="dbo\Tables\dbo.Counterparty.sql" />
+    <Build Include="dbo\Tables\dbo.AllocationGroup.sql" />
+    <Build Include="dbo\Tables\dbo.ContractLeg.sql" />
+    <Build Include="dbo\Tables\dbo.ContractInterestLegSchedule.sql" />
+    <Build Include="dbo\Tables\dbo.ContractInterestLegEconomic.sql" />
+    <Build Include="dbo\Tables\dbo.ContractEquityLegSchedule.sql" />
+    <Build Include="dbo\Tables\dbo.ContractEquityLegEconomic.sql" />
+    <Build Include="dbo\Views\dbo.ContractDisplay.sql" />
+    <Build Include="dbo\Stored Procedures\dbo.Contract_Select.sql" />
+    <Build Include="dbo\User Defined Types\dbo.ContractLeg.sql" />
+    <Build Include="dbo\User Defined Types\dbo.ContractInterestLegSchedule.sql" />
+    <Build Include="dbo\User Defined Types\dbo.ContractInterestLegEconomic.sql" />
+    <Build Include="dbo\User Defined Types\dbo.ContractEquityLegSchedule.sql" />
+    <Build Include="dbo\User Defined Types\dbo.ContractEquityLegEconomic.sql" />
+    <Build Include="dbo\User Defined Types\dbo.Contract.sql" />
+    <Build Include="dbo\Stored Procedures\dbo.Contract_Upsert.sql" />
+    <Build Include="dbo\Tables\dbo.BusinessRegion.sql" />
+    <Build Include="engine\Tables\engine.DailyPosition.sql" />
+    <Build Include="engine\Tables\engine.CashType.sql" />
+    <Build Include="engine\Tables\engine.Cash.sql" />
+    <Build Include="engine\Tables\engine.AccrualBasis.sql" />
+    <Build Include="engine\Tables\engine.TradeType.sql" />
+    <Build Include="engine\Tables\engine.TradeOpen.sql" />
+    <Build Include="engine\Tables\engine.TradeMatchOrder.sql" />
+    <Build Include="engine\Tables\engine.TradeMatch.sql" />
+    <Build Include="engine\Tables\engine.Trade.sql" />
+    <Build Include="engine\Tables\engine.PaymentScheduleType.sql" />
+    <Build Include="engine\Tables\engine.Payment.sql" />
+    <Build Include="engine\Tables\engine.EntityIdentifer.sql" />
+    <Build Include="engine\Tables\engine.EntityType.sql" />
+    <Build Include="engine\Stored Procedures\engine.ReadTrades.sql" />
+    <Build Include="engine\Stored Procedures\engine.ReadSwapPosition.sql" />
+    <Build Include="engine\Stored Procedures\engine.ReadMarketPrices.sql" />
+    <Build Include="engine\Stored Procedures\engine.ReadInterestResetSchedule.sql" />
+    <Build Include="engine\Stored Procedures\engine.ReadInterestRates.sql" />
+    <Build Include="engine\Stored Procedures\engine.ReadEquityResetSchedule.sql" />
+    <Build Include="engine\Stored Procedures\engine.ClearTrades.sql" />
+    <Build Include="engine\Stored Procedures\engine.ClearTradeOpens.sql" />
+    <Build Include="engine\Stored Procedures\engine.ClearTradeMatches.sql" />
+    <Build Include="engine\Stored Procedures\engine.ClearPayments.sql" />
+    <Build Include="engine\Stored Procedures\engine.ClearDailyPositions.sql" />
+    <Build Include="engine\Stored Procedures\engine.ClearCash.sql" />
+    <Build Include="engine\Stored Procedures\engine.WriteTrades.sql" />
+    <Build Include="engine\Stored Procedures\engine.WriteTradeOpens.sql" />
+    <Build Include="engine\Stored Procedures\engine.WriteTradeMatches.sql" />
+    <Build Include="engine\Stored Procedures\engine.WritePayments.sql" />
+    <Build Include="engine\Stored Procedures\engine.WriteDailyPositions.sql" />
+    <Build Include="engine\Stored Procedures\engine.WriteCash.sql" />
+    <Build Include="engine\Stored Procedures\engine.GetNextIdentiferBlock.sql" />
+    <Build Include="engine\User Defined Types\engine.TradeTableType.sql" />
+    <Build Include="engine\User Defined Types\engine.TradeOpenTableType.sql" />
+    <Build Include="engine\User Defined Types\engine.TradeMatchTableType.sql" />
+    <Build Include="engine\User Defined Types\engine.PaymentTableType.sql" />
+    <Build Include="engine\User Defined Types\engine.DailyPositionTableType.sql" />
+    <Build Include="engine\User Defined Types\engine.CashTableType.sql" />
+    <Build Include="Security\engine.sql" />
+    <None Include="helpers\scripts\BuildBasicTestData.sql" />
+    <Build Include="dbo\Tables\dbo.Price.sql" />
+    <Build Include="dbo\Tables\dbo.Position.sql" />
+    <Build Include="dbo\Tables\dbo.Broker.sql" />
+    <Build Include="sample\Tables\sample.SampleDefaults.sql" />
+    <Build Include="sample\Tables\sample.RandomBrokerNames.sql" />
+    <Build Include="sample\Tables\sample.RandomFundNames.sql" />
+    <Build Include="sample\Tables\sample.InvestmentBanks.sql" />
+    <Build Include="dbo\Views\dbo.PriceDisplay.sql" />
+    <Build Include="dbo\Views\dbo.InstrumentDisplay.sql" />
+    <Build Include="dbo\Views\dbo.ClientDisplay.sql" />
+    <Build Include="sample\Functions\sample.GetShortCode.sql" />
+    <Build Include="sample\Stored Procedures\sample.DemoImportInterestRate.sql" />
+    <Build Include="sample\Stored Procedures\sample.ImportStLouisFedInterestRate.sql" />
+    <Build Include="sample\Stored Procedures\sample.ImportYahooFinancePrice.sql" />
+    <Build Include="sample\Stored Procedures\sample.ImportInstrument.sql" />
+    <Build Include="sample\Stored Procedures\sample.ImportCurrency.sql" />
+    <Build Include="sample\Stored Procedures\sample.ImportCountry.sql" />
+    <Build Include="sample\Stored Procedures\sample.ReBuildPositions.sql" />
+    <Build Include="sample\Stored Procedures\sample.DemoCreateContractDetails.sql" />
+    <Build Include="sample\Stored Procedures\sample.DemoCreateContractsForFund.sql" />
+    <Build Include="sample\Stored Procedures\sample.DemoCreateFundForClient.sql" />
+    <Build Include="sample\Stored Procedures\sample.DemoCreateClient.sql" />
+    <Build Include="sample\Stored Procedures\sample.DemoCreateBroker.sql" />
+    <Build Include="Security\sample.sql" />
+    <Build Include="work\Tables\work.WorkItem.sql" />
+    <Build Include="work\Tables\work.WorkflowTask.sql" />
+    <Build Include="work\Tables\work.WorkflowType.sql" />
+    <Build Include="work\Tables\work.SystemStatus.sql" />
+    <Build Include="work\Tables\work.Origin.sql" />
+    <Build Include="sample\Stored Procedures\sample.FillSampleTables.sql" />
+    <Build Include="sample\Stored Procedures\sample.DemoSetupAndLoad.sql" />
+    <Build Include="sample\Stored Procedures\sample.DemoCreateTrades.sql" />
+    <Build Include="work\Stored Procedures\work.StartWorkflow.sql" />
+    <Build Include="work\Stored Procedures\work.GetAllWorkflowStatic.sql" />
+    <Build Include="work\Stored Procedures\work.MarkAsFailed.sql" />
+    <Build Include="work\Stored Procedures\work.MarkAsComplete.sql" />
+    <Build Include="work\Stored Procedures\work.TryRefreshWorkItemLock.sql" />
+    <Build Include="work\Stored Procedures\work.TryGetWork.sql" />
+    <Build Include="work\Stored Procedures\work.GetAllWork.sql" />
+    <Build Include="dbo\User Defined Types\dbo.IntList.sql" />
+    <Build Include="Security\work.sql" />
+    <Build Include="work\Functions\work.MakeJSON2.sql" />
+    <Build Include="work\Functions\work.MakeJSON1.sql" />
+    <Build Include="sample\Stored Procedures\sample.WorkflowSetup.sql" />
+    <Build Include="sample\Stored Procedures\sample.DemoCreateAllSampleData.sql" />
+    <Build Include="qry\Stored Procedures\qry.MultiLevelCashflowDetail.sql" />
+    <Build Include="Security\qry.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="LaminarDb.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(MSBuildProgramFiles32)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac">
+      <HintPath>$(MSBuildProgramFiles32)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+</Project>
